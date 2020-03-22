@@ -4,8 +4,6 @@ from skimage.util.shape import view_as_windows
 import numpy as np
 import pandas as pd
 
-from seasonal_behavior_deviation import __version__
-
 __author__ = "Jannik Frauendorf"
 __copyright__ = "Jannik Frauendorf"
 __license__ = "mit"
@@ -13,19 +11,37 @@ __license__ = "mit"
 _logger = logging.getLogger(__name__)
 
 
-def remove_duplicate_rows(df, timestamp_col_name='timestamp', value_col_name='value'):
-    """
-    Remove duplicates of the timestamp-column-combination in the given df.
-    """
-    return df.drop_duplicates(subset=[timestamp_col_name, value_col_name], keep='first')
-
-
 def create_sliding_windows(series, window_size):
     """
     Computes the result of a sliding window over the given vector with the given window size.
     Each row represents the content of the sliding window at each position.
-    :param series: a pandas Series
-    :param window_size: a integer specifying the width of the sliding window.
+
+    :param series: pandas Series containing the time series
+    :param window_size: an integer specifying the width of the sliding window.
+    :return: pandas DataFrame
     """
     vector = np.array(series)
     return pd.DataFrame(view_as_windows(vector, window_size))
+
+
+def normalize_column(df, column_name, new_column_name=None):
+    """
+    Normalize the given column in the given DatFrame linearly between 0 and 1.
+    If no new_column_name is given the original data will be replaced.
+
+    :param df: a pandas data frame that contains at least the given column_name
+    :param column_name: a string that specifies the column name that should be normalized
+    :param new_column_name: a string that specifies the column name of the normalized values
+    :return: pandas DataFrame
+    """
+
+    if new_column_name is None:
+        new_column_name = column_name
+
+    column_min = df[column_name].min()
+    column_max = df[column_name].max()
+
+    # linear normalization
+    df.loc[:, new_column_name] = (df[column_name] - column_min) / (column_max - column_min)
+    return df
+
