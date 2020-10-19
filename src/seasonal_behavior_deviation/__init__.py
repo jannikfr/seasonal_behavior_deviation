@@ -12,5 +12,5 @@ finally:
 
 
 from .preprocess import preprocess, add_season_steps  # noqa: E402
-from .anomaly_detection import detect_anomalies, extract_normal_behavior  # noqa: E402
+from .anomaly_detection import SeasonalBehaviorDeviation  # noqa: E402
 from .util import normalize_column  # noqa: E402
