@@ -39,7 +39,7 @@ def detect_anomalies(data, season_length, window_size=3):
     # sort by index
     df = df.sort_index()
 
-    # generate sliding window data frame over the normal behavior vector and the value vector (both normalized)
+    # generate sliding window DataFrame over the normal behavior vector and the value vector
     normal_behavior_windows = create_sliding_windows(df.loc[:, 'normal_behavior'], window_size)
     series_behavior_windows = create_sliding_windows(df.loc[:, value_column_name], window_size)
 
