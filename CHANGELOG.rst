@@ -18,3 +18,9 @@ Version 0.1.2
 - Bugfixes
 - Adjust values to time series trend
 - result interface
+
+Version 0.1.3
+=============
+- Improved Simplicity
+- Improved speed
+- Added possibilty to choose distance function
