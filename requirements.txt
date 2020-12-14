@@ -2,3 +2,4 @@ matplotlib
 pandas==1.0.3
 numpy==1.18.2
 scikit-image==0.16.2
+fastdtw==0.3.4
