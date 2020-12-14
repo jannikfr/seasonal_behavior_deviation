@@ -23,4 +23,4 @@ Version 0.1.3
 =============
 - Improved Simplicity
 - Improved speed
-- Added possibilty to choose distance function
+- Added possibility to choose distance function
