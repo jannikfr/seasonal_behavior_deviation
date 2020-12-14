@@ -19,7 +19,7 @@ Version 0.1.2
 - Adjust values to time series trend
 - result interface
 
-Version 0.1.3
+Version 0.1.4
 =============
 - Improved Simplicity
 - Improved speed
